@@ -1,6 +1,12 @@
 class Subscription
-  def self.all
-    1.upto(10).map { |id| new(id, "name_#{id}") }
+  class << self
+    def all
+      1.upto(10).map {|id| new(id, "name_#{id}") }
+    end
+
+    def find(id)
+      new(id, "name_#{id}")
+    end
   end
 
   def initialize(id, name)
@@ -11,9 +17,6 @@ class Subscription
     [true, false].sample
   end
 
-  def to_json
-    {id: @id, name: @name}
-  end
-
+  private
   attr_accessor :id, :name
 end

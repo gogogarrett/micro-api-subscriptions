@@ -14,7 +14,7 @@ module Api
       end
 
       get ":id" do
-        present Subscription.new(1, 'Bob'), with: SubscriptionRepresenter
+        present Subscription.find(params[:id]), with: SubscriptionRepresenter
       end
     end
 
