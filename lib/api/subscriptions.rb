@@ -8,6 +8,10 @@ module Api
     format :json
     formatter :json, Grape::Formatter::Roar
 
+    before do
+      header "Access-Control-Allow-Origin", "*"
+    end
+
     resources :subscriptions do
       get do
         present Subscription.all, with: SubscriptionsRepresenter
